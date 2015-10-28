@@ -4,7 +4,7 @@ import json
 from slacker import Slacker
 import BaseHTTPServer
 
-
+channel = '#yourchannelhere'
 slack = Slacker('yourapikeyhere')
 
 HOST_NAME = 'localhost'
@@ -29,7 +29,7 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 str(data['Episodes'][0]['EpisodeNumber']) + ', "' + \
                 str(data['Episodes'][0]['Title']) + '" (' + str(data['Episodes'][0]['Quality']) + ')'
 
-        slack.chat.post_message('#tvparty', output, as_user=True)
+        slack.chat.post_message(channel, output, as_user=True)
 
 if __name__ == '__main__':
     server_class = BaseHTTPServer.HTTPServer
